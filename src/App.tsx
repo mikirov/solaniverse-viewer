@@ -4,7 +4,8 @@ import Wallet from "./components/Wallet/Wallet";
 import Player from "./components/Player/Player";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 import styles from "./App.module.css"
-
+import { Button, Row } from 'antd'
+import styled from 'styled-components'
 
 const unityContext = new UnityContext({
     loaderUrl: "Build/Build.loader.js",
@@ -16,9 +17,55 @@ const unityContext = new UnityContext({
     productVersion: "0.1",
 });
 
+const Canvas = styled(Row)`
+    position: relative;
+`;
+
+
+const MenuButton = styled(Button)`
+    position: absolute;
+    right: 28px;
+    top: 47px;
+    z-index: 10;
+    background: linear-gradient(311.99deg, rgba(0, 0, 0, 0.5) -22.55%, rgba(255, 255, 255, 0.5) 131.34%), #6311FF;
+    width: 110px;
+    height: 40px;
+    background-blend-mode: soft-light, normal;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 11.25px;
+    border: none;
+
+    font-family: Luckiest Guy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: white;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    &:hover {
+        background: #7438f5;
+        color: white;
+    }
+    &:active {
+        background: linear-gradient(311.99deg, rgba(0, 0, 0, 0.5) -22.55%, rgba(255, 255, 255, 0.5) 131.34%), #6311FF;;
+        color: white;
+    }
+`
+
 function App() {
 
     const [initialized, setInitialized] = useState(false);
+    const [menuVisible, setMenuVisible] = useState(false);
+
+    const showMenu = () => {
+        setMenuVisible(true)
+    }
+
+    const closeMenu = () => {
+        setMenuVisible(false)
+    }
 
     useEffect(() => {
         unityContext.on("SceneInitialized", () => {
@@ -31,17 +78,19 @@ function App() {
     }
 
     return (
-        <div style={{position: "relative"}}>
-            {/*<LoadingScreen enabled={!initialized}/>*/}
-            {/*TODO: get the seed of the NFT and pass it to the method*/}
-            <Wallet/>
-            <Player enabled={initialized} url={"background_audio.mp3"}/>
+        <>
+        <Canvas justify="center">
+            <LoadingScreen enabled={!initialized}/>
+            {initialized && (<MenuButton onClick={showMenu}>Menu</MenuButton>)}
+            {/*<SDCMenu onClose={closeMenu} visible={menuVisible}/>*/}
+
             <Unity
                 unityContext={unityContext}
                 tabIndex={1}
                 className={styles.unity}
             />
-        </div>
+        </Canvas>
+        </>
     );
 }
 

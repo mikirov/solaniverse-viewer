@@ -8,7 +8,9 @@ const LoadingScreen = (props) => {
         return null;
     }
     return <div className={styles.container}>
-        <img className={styles.backgroundImage} src="/loading-screen.gif" alt=""/>
+        <video autoPlay muted className={styles.backgroundImage}>
+            <source src="loading-video.mp4" type="video/mp4"/>
+        </video>
     </div>
 
 }
