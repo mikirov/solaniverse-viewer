@@ -1,7 +1,5 @@
 import React, {MouseEventHandler, useEffect, useState} from 'react';
 import Unity, {UnityContext} from "react-unity-webgl";
-import Wallet from "./components/Wallet/Wallet";
-import Player from "./components/Player/Player";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 import styles from "./App.module.css"
 import { Button, Row } from 'antd'
@@ -54,6 +52,9 @@ const MenuButton = styled(Button)`
     }
 `
 
+
+
+
 function App() {
 
     const [initialized, setInitialized] = useState(false);
@@ -74,7 +75,7 @@ function App() {
     }, []);
 
     const GeneratePlanet = (seed: number) => {
-        unityContext.send("GameController", "GeneratePlanet", seed);
+        unityContext.send("NFTController", "GeneratePlanet", seed);
     }
 
     return (
