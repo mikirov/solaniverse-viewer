@@ -4,6 +4,7 @@ import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 import styles from "./App.module.css"
 import { Button, Row } from 'antd'
 import styled from 'styled-components'
+import NFTList from "./components/NFTList/NFTList";
 
 const unityContext = new UnityContext({
     loaderUrl: "Build/Build.loader.js",
@@ -83,7 +84,7 @@ function App() {
         <Canvas justify="center">
             <LoadingScreen enabled={!initialized}/>
             {initialized && (<MenuButton onClick={showMenu}>Menu</MenuButton>)}
-            {/*<SDCMenu onClose={closeMenu} visible={menuVisible}/>*/}
+            <NFTList onClose={closeMenu} visible={menuVisible}/>
 
             <Unity
                 unityContext={unityContext}
