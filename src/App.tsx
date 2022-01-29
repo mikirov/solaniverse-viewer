@@ -16,10 +16,6 @@ const unityContext = new UnityContext({
     productVersion: "0.1",
 });
 
-const Canvas = styled(Row)`
-    position: relative;
-`;
-
 
 const MenuButton = styled(Button)`
     position: absolute;
@@ -43,16 +39,20 @@ const MenuButton = styled(Button)`
     letter-spacing: 0.03em;
     color: white;
     text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    padding-top: 5px;
     &:hover {
         background: #7438f5;
         color: white;
     }
-    &:active {
+    &:active, &:focus {
         background: linear-gradient(311.99deg, rgba(0, 0, 0, 0.5) -22.55%, rgba(255, 255, 255, 0.5) 131.34%), #6311FF;;
         color: white;
     }
 `
 
+const Canvas = styled(Row)`
+    position: relative;
+`;
 
 
 

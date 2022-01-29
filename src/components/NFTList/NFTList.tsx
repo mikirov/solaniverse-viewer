@@ -324,7 +324,7 @@ const NFTList = ({onClose, visible}: MenuInterface) => {
                   <OwernshipTitle>Ownership</OwernshipTitle>
                   <Description>These are the NFTs you own</Description>
                   <NFTItems gutter={[18,28]}>
-                      {ownedNFTs.map((item: AxiosResponse)=> (
+                      { ownedNFTs && ownedNFTs.length > 0 && ownedNFTs.map((item: AxiosResponse)=> (
                           <NFTWrapper span={8}>
                               <NFTImage src={item.data.uri} alt=""/>
                               <NFTShadow/>

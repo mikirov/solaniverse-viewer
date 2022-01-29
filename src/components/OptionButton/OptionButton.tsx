@@ -46,14 +46,14 @@ const ComingSoon = styled.img`
     width: 120px;
 `
 
-interface SDCButtonInterface {
+interface OptionButtonInterface {
     title: string;
     onClick: () => void;
     comingsoon: boolean;
     background: PlatteInterface;
 }
 
-const OptionButton = ({ title, onClick, comingsoon, background }: SDCButtonInterface) => {
+const OptionButton = ({ title, onClick, comingsoon, background }: OptionButtonInterface) => {
     return (
         <>
         <ContentButton comingsoon={comingsoon} background={background} onClick={onClick}>{title}
